@@ -34,7 +34,7 @@ public class SwordController : MonoBehaviour
 	{
 		if (collectSound) AudioSource.PlayClipAtPoint(collectSound, transform.position);
         
-        GameManager.instance.AddItem(Instantiate(gameObject));
+        //GameManager.instance.AddItem();
 
         Destroy(gameObject);
 	}
