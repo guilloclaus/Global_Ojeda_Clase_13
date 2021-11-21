@@ -8,16 +8,28 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
 
-    public List<GameObject> itemsPlayer;
 
+
+    public static PlayerController player;
+    public static int scorePlayer = 0;
 
     private void Awake()
     {
+
+
+
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            itemsPlayer = new List<GameObject>();
+            
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
+
+            scorePlayer = 0;
+            player.Attack = 0;
+            player.Shield = 0;
+            player.Life = 100;
         }
         else
         {
@@ -36,11 +48,29 @@ public class GameManager : MonoBehaviour
     void Update()
     {
 
+        Debug.Log($"Score: {scorePlayer}, Player: Life {player.Life}, Attack {player.Attack}, Shield {player.Shield}");
+
     }
 
-    public void AddItem(GameObject _object)
+
+    public void AddScore(int _scorePlayer)
     {
-        instance.itemsPlayer.Add(_object);
+        scorePlayer += _scorePlayer;
     }
+
+    public void AddPlayerShield(int _shield)
+    {
+        player.GetComponent<PlayerController>().AddShield(_shield);
+    }
+    public void AddPlayerAttack(int _attack)
+    {        
+        player.GetComponent<PlayerController>().AddAttack(_attack);
+    }
+    public void AddPlayerLife(int _life)
+    {
+        player.GetComponent<PlayerController>().AddLife(_life);
+    }
+
+
 
 }

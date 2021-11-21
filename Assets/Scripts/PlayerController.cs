@@ -9,8 +9,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float fuerzaSalto = 500f;
     [SerializeField] private float velocidadGiro = 10f;
     [SerializeField] private Animator animaPlayer;
-    [SerializeField] LayerMask groundLayer;    
+    [SerializeField] LayerMask groundLayer;
     [SerializeField] private AudioClip walkSound;
+
+
+    [SerializeField] private int lifePlayer;
+    [SerializeField] private int shieldPlayer;
+    [SerializeField] private int attackPlayer;
+
 
     private AudioSource audioPlayer;
 
@@ -79,7 +85,7 @@ public class PlayerController : MonoBehaviour
                 audioPlayer.PlayOneShot(walkSound, 0.5f);
             }
         }
-        
+
 
 
 
@@ -106,23 +112,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    if (collision.gameObject.layer == 6)
-    //    {
-    //        isGrounded = true;
-    //    }
-    //}
-
-    //private void OnCollisionExit(Collision collision)
-    //{
-    //    if (collision.gameObject.layer == 6)
-    //    {
-    //        isGrounded = false;
-    //    }
-    //}
-
     private void IsGrounded()
     {
         if (Physics.Raycast(transform.position, Vector3.down, 0.05f, groundLayer))
@@ -136,6 +125,25 @@ public class PlayerController : MonoBehaviour
 
 
     }
+
+    public void AddShield(int _shield)
+    {
+        shieldPlayer += _shield;
+    }
+    public void AddAttack(int _attack)
+    {
+        attackPlayer += _attack;
+    }
+    public void AddLife(int _life)
+    {
+        lifePlayer += _life;
+    }
+
+    public int Shield { get { return shieldPlayer; } set { shieldPlayer = value; } }
+    public int Attack { get { return attackPlayer; } set { attackPlayer = value; } }
+    public int Life { get { return lifePlayer; } set { lifePlayer = value; } }
+
+
 
     private void OnDrawGizmos()
     {
