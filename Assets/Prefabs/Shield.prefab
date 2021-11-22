@@ -195,7 +195,7 @@ MonoBehaviour:
   rotate: 1
   rotationSpeed: 10
   collectSound: {fileID: 0}
-  itemType: 0
+  itemType: 2
   valor: 0
   Nombre: 
 --- !u!135 &135105148080420062

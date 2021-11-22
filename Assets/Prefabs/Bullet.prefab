@@ -99,7 +99,7 @@ MonoBehaviour:
   rotate: 1
   rotationSpeed: 10
   collectSound: {fileID: 0}
-  itemType: 0
+  itemType: 3
   valor: 0
   Nombre: 
 --- !u!82 &82776637683723400
